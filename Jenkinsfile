@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Validando Sintaxis de Terraform y Ansible...'
                 dir('terraform') {
+                    sh 'terraform init -backend=false'
                     sh 'terraform validate'
                 }
                 dir('ansible') {
@@ -17,7 +18,6 @@ pipeline {
             steps {
                 echo 'Generating Terraform plan...'
                 dir('terraform') {
-                    sh 'terraform init -backend=false'
                     sh 'terraform plan'
                 }
             }
