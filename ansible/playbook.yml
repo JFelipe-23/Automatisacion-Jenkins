@@ -1,0 +1,13 @@
+name: Despliegue de la aplicación y Reinicio Condicional de Servicios
+hosts: produccion
+tasks:
+  -name: 1. Inyectar configuración de la BD
+  copy:
+    dest: /tmp/db_config.txt
+    content: "Conexión exitosa al entorno: {{ entorno }}"
+  notify: Reiniciar_Servicio_Web
+
+handlers:
+  - name: Reiniciar_Servicio_Web
+    debug:
+      msg: "=== Reiniciando el servicio web NGINX / APACHE ==="
