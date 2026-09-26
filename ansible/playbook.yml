@@ -1,5 +1,6 @@
 name: Despliegue de la aplicación y Reinicio Condicional de Servicios
-hosts: produccion
+hosts: all
+become: true
 tasks:
   -name: 1. Inyectar configuración de la BD
   copy:
