@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Generating Terraform plan...'
                 dir('terraform') {
-                    sh 'terraform init'
+                    sh 'terraform init -backend=false'
                     sh 'terraform plan'
                 }
             }
